@@ -1,0 +1,14 @@
+POST http://localhost:3000/pedido
+content-type: application/json
+
+{
+    "id": 1,
+    "customer": "Celeiro Supermercado", 
+    "iten": [],
+    "totalAmount": 20,
+    "status": "pending"
+}
+
+###
+
+GET http://localhost:3000/pedidos
