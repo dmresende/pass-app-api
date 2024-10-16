@@ -1,23 +1,39 @@
 import { randomUUID } from 'node:crypto';
 
 export class DatabaseMemory {
-    #pedidos = new Map();
+    #passwords = new Map();
 
-    list() {
-        return Array.from(this.#pedidos.values());
+    list(search) {
+        //entries retorna um array com o id
+        return Array.from(this.#passwords.entries())
+            .map((passwodArray) => {
+                const id = passwodArray[0];
+                const data = passwodArray[1];
+
+                return {
+                    id,
+                    ...data
+                }
+            })
+            .filter(password => {
+                if (search) {
+                    return password.title.includes(search);
+                }
+                return true
+            });
     }
 
-    create(pedido) {
-        const pedidoId = randomUUID();
+    create(password) {
+        const passwordId = randomUUID();
 
-        this.#pedidos.set(pedidoId, pedido);
+        this.#passwords.set(passwordId, password);
     }
 
-    update(id, pedido) {
-        this.#pedidos.set(id, pedido);
+    update(id, password) {
+        this.#passwords.set(id, password);
     }
 
     delete(id) {
-        this.#pedidos.delete(id);
+        this.#passwords.delete(id);
     }
 }

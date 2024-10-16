@@ -1,14 +1,13 @@
-POST http://localhost:3000/pedido
+
+POST http://localhost:3000/passwords
 content-type: application/json
 
 {
-    "id": 1,
-    "customer": "Celeiro Supermercado", 
-    "iten": [],
-    "totalAmount": 20,
-    "status": "pending"
+    "title": "Facebook", 
+    "password": [1,2,3,4,5],
+    "status": "created"
 }
 
 ###
 
-GET http://localhost:3000/pedidos
+GET http://localhost:3000/passwords
