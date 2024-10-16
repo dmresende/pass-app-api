@@ -1,4 +1,4 @@
-# API Pass-App
+# PASS-APP-API
 
 Esta API foi desenvolvida com Node.js e Fastify para ser consumida pelo **pass-app**, um aplicativo de gerenciamento de senhas. O **pass-app** cria senhas com base em um número de caracteres escolhido pelo usuário (entre 6 e 20) e as salva em uma tela de senhas. Os usuários podem visualizar suas senhas (com um título) ou excluí-las.
 
