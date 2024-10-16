@@ -1,10 +1,6 @@
-# API de Gerenciamento de Pedidos
+# API Pass-App
 
-Este é um projeto de API simples para gerenciamento de pedidos, desenvolvido com Node.js e Fastify.
-
-## Descrição
-
-Esta API permite criar, listar, atualizar e excluir pedidos. Ela utiliza um banco de dados em memória para armazenar as informações dos pedidos.
+Esta API foi desenvolvida com Node.js e Fastify para ser consumida pelo **pass-app**, um aplicativo de gerenciamento de senhas. O **pass-app** cria senhas com base em um número de caracteres escolhido pelo usuário (entre 6 e 20) e as salva em uma tela de senhas. Os usuários podem visualizar suas senhas (com um título) ou excluí-las.
 
 ## Tecnologias Utilizadas
 
@@ -14,28 +10,28 @@ Esta API permite criar, listar, atualizar e excluir pedidos. Ela utiliza um banc
 
 ## Estrutura do Projeto
 
-- `server.js`: Arquivo principal que configura e inicia o servidor Fastify.
-- `database-memory.js`: Implementação de um banco de dados em memória.
-- `routes.http`: Arquivo com exemplos de requisições HTTP para testar a API.
+- `server.js`: Configuração e inicialização do servidor Fastify.
+- `database-memory.js`: Banco de dados em memória.
+- `routes.http`: Exemplos de requisições HTTP para testar a API.
 
 ## Rotas da API
 
-1. **Criar Pedido**
+1. **Criar Password**
    - Método: POST
-   - Rota: `/pedido`
-   - Corpo da requisição: JSON com os detalhes do pedido
+   - Rota: `/password`
+   - Corpo da requisição: JSON com os detalhes do password
 
-2. **Listar Pedidos**
+2. **Listar Passwords**
    - Método: GET
-   - Rota: `/pedidos`
+   - Rota: `/passwords`
 
-3. **Atualizar Pedido**
+3. **Atualizar Passwords**
    - Método: PUT
-   - Rota: `/pedidos/:id`
+   - Rota: `/passwords/:id`
 
-4. **Excluir Pedido**
+4. **Excluir Passwords**
    - Método: DELETE
-   - Rota: `/pedidos/:id`
+   - Rota: `/passwords/:id`
 
 ## Como Executar
 
@@ -53,24 +49,22 @@ Esta API permite criar, listar, atualizar e excluir pedidos. Ela utiliza um banc
 
 ## Testando a API
 
-Você pode usar o arquivo `routes.http` para testar as rotas da API. Se estiver usando o Visual Studio Code, instale a extensão "REST Client" para executar as requisições diretamente do arquivo.
+Utilize o arquivo `routes.http` para testar as rotas. Se estiver usando o Visual Studio Code, instale a extensão "REST Client" para executar as requisições diretamente.
 
 ## Estrutura do Banco de Dados
 
-O banco de dados em memória (`DatabaseMemory`) armazena os pedidos com os seguintes campos:
-
-- `id`: Identificador único do pedido (gerado automaticamente)
-- `customer`: Nome do cliente
-- `iten`: Array de itens do pedido
-- `totalAmount`: Valor total do pedido
-- `status`: Status do pedido
+O banco de dados em memória (`DatabaseMemory`) armazena os passwords com os seguintes campos:
+- `Id`: Identificador único do password (gerado automaticamente)
+- `title`: Titulo ou apelido
+- `password`: String de senha
+- `status`:  Status
 
 ## Próximos Passos
 
-- Implementar a lógica para atualizar e excluir pedidos
-- Adicionar validação de dados nas requisições
+- Implementar lógica para atualizar e excluir passwords
+- Adicionar validação de dados
 - Implementar um banco de dados persistente
 
 ## Contribuição
 
-Sinta-se à vontade para contribuir com este projeto. Abra uma issue ou envie um pull request com suas sugestões e melhorias.
+Sinta-se à vontade para contribuir com sugestões e melhorias.
