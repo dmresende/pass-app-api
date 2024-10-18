@@ -1,5 +1,6 @@
 import { fastify } from 'fastify';
 import { DatabasePostgres } from './database-postgres.js';
+import { env } from 'process';
 
 const server = fastify();
 const database = new DatabasePostgres();
@@ -42,24 +43,28 @@ server.get('/passwords', async (request) => {
 });
 
 server.put('/passwords/:id', async (request, reply) => {
+    console.log(request.body)
     const passwordId = request.params.id;
-    const { title, password, status } = request.body;
+    const { title, password, userId, createdAt, updatedAt } = request.body;
 
     await database.update(passwordId, {
+        userId,
         title,
         password,
-        status
+        createdAt,
+        updatedAt,
     });
     return reply.status(204).send();
 });
 
 server.delete('/passwords/:id', async (request, reply) => {
+
     const passwordId = request.params.id;
     await database.delete(passwordId);
-
+    console.log('Senha excluída: ', passwordId)
     return reply.status(204).send();
 });
 
-server.listen({ port: 3000 });
-console.log('Server is running on: http://localhost:3000/ 🚀');
+server.listen({ port: env.PORT ?? 3000 });
+console.log(`Server is running on: http://localhost:${env.PORT ?? 3000}/ 🚀`);
 
