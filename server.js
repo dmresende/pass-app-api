@@ -65,6 +65,8 @@ server.delete('/passwords/:id', async (request, reply) => {
     return reply.status(204).send();
 });
 
-server.listen({ port: env.PORT ?? 3000 });
+server.listen({
+    host: '0.0.0.0', port: env.PORT ?? 3000
+});
 console.log(`Server is running on: http://localhost:${env.PORT ?? 3000}/ 🚀`);
 
